@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var intToRoman = function (num) {
+      if (num == 0) {
+        return "";
+      } else {
+        let num1 = num % 10;
+        num = Math.floor(num / 10);
+        let num2 = (num % 10);
+        num = Math.floor(num / 10);
+        let num3 = (num % 10);
+        num = Math.floor(num / 10);
+        let num4 = (num % 10);
+        let str = "";
+        if (num4 != 0) {
+          num4 = num4 % 10;
+          for (let i = 0; i < num4; i++) {
+            str += "M";
+          }
+        }
+        if (num3 != 0) {
+          if (num3 == 9) {
+            str += "CM";
+          } else if (num3 == 4) {
+            str += "CD";
+          } else {
+            if (Math.floor(num3 / 5) == 0) {
+              for (let i = 0; i < num3; i++) {
+                str += "C";
+              }
+            } else if (num3 / 5 == 1) {
+              str += "D";
+            } else {
+              num3 = num3 % 5;
+              str += "D";
+              for (let i = 0; i < num3; i++) {
+                str += "C";
+              }
+            }
+          }
+        }
+        if (num2 != 0) {
+          if (num2 == 9) {
+            str += "XC";
+          } else if (num2 == 4) {
+            str += "XL";
+          } else {
+            if (Math.floor(num2 / 5) == 0) {
+              for (let i = 0; i < num2; i++) {
+                str += "X";
+              }
+            } else if (num2 / 5 == 1) {
+              str += "L";
+            } else {
+              num2 = num2 % 5;
+              str += "L";
+              for (let i = 0; i < num2; i++) {
+                str += "X";
+              }
+            }
+          }
+        }
+        if (num1 == 4) {
+          str += "IV";
+        } else if (num1 == 9) {
+          str += "IX";
+        } else {
+          if (Math.floor(num1 / 5) == 0) {
+            for (let i = 0; i < num1; i++) {
+              str += "I";
+            }
+          } else if (num1 / 5 == 1) {
+            str += "V";
+          } else {
+            num1 = num1 % 5;
+            str += "V";
+            for (let i = 0; i < num1; i++) {
+              str += "I"
+            }
+          }
+        }
+        return str;
+      }
+    }
+  </script>
+</body>
+
+</html>

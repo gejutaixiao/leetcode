@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var romanToInt = function (s) {
+      let len = s.length;
+      let num = [-1];
+      let sum = 0;
+      for (let i = 0; i < len; i++) {
+        switch (s[i]) {
+          case 'I':
+            num.push(s[i]);
+            break;
+          case 'V':
+            if (num[num.length - 1] == 'I') {
+              sum += 4;
+              num.pop();
+            } else {
+              num.push(s[i]);
+            }
+            break;
+          case 'X':
+            if (num[num.length - 1] == 'I') {
+              sum += 9;
+              num.pop();
+            } else {
+              num.push(s[i]);
+            }
+            break;
+          case 'L':
+            if (num[num.length - 1] == 'X') {
+              sum += 40;
+              num.pop();
+            } else {
+              num.push(s[i]);
+            }
+            break;
+          case 'C':
+            if (num[num.length - 1] == 'X') {
+              sum += 90;
+              num.pop();
+            } else {
+              num.push(s[i]);
+            }
+            break;
+          case 'D':
+            if (num[num.length - 1] == 'C') {
+              sum += 400;
+              num.pop();
+            } else {
+              num.push(s[i]);
+            }
+            break;
+          case 'M':
+            if (num[num.length - 1] == 'C') {
+              sum += 900;
+              num.pop();
+            } else {
+              num.push(s[i]);
+            }
+            break;
+        }
+      }
+      while (num.length != 0) {
+        switch (num.pop()) {
+          case 'I':
+            sum += 1;
+            break;
+          case 'V':
+            sum += 5;
+            break;
+          case 'X':
+            sum += 10;
+            break;
+          case 'L':
+            sum += 50;
+            break;
+          case 'C':
+            sum += 100;
+            break;
+          case 'D':
+            sum += 500;
+            break;
+          case 'M':
+            sum += 1000;
+            break;
+        }
+      }
+      return sum;
+    };
+  </script>
+</body>
+
+</html>
